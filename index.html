@@ -430,6 +430,11 @@ details p{padding:0 30px 22px 0;color:var(--body)}
 .final h2{font-size:clamp(56px,8vw,104px);line-height:.98;letter-spacing:-.035em}
 .final .lede{font-family:var(--serif);font-style:italic;font-size:clamp(25px,2.7vw,33px);line-height:1.2;margin-top:22px;max-width:520px}
 .final .copy{position:sticky;top:110px}
+.skip-mock{display:block;margin-top:24px;padding-top:20px;border-top:1px solid rgba(236,212,188,.24);max-width:500px;font-size:16.5px;font-weight:600;line-height:1.4;color:var(--tan);text-decoration:none;transition:color .2s}
+.skip-mock span{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;line-height:1.2;color:var(--cream);margin-bottom:4px}
+.skip-mock i{display:inline-block;font-style:normal;transition:transform .25s var(--ease)}
+.skip-mock:hover{color:var(--cream)}
+.skip-mock:hover i{transform:translateX(4px)}
 .form-card{background:var(--cream);color:var(--ink);border-radius:20px;padding:clamp(22px,3vw,34px);box-shadow:0 34px 70px -34px #000}
 .form-card h3{font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--wine);margin-bottom:18px}
 .field{display:block;margin-bottom:15px}
@@ -828,15 +833,11 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
     </div>
     <div class="faq-list rv">
       <details><summary>What changes, and what stays?</summary><p>We change how your site looks and sounds, never how your system runs.</p><p><strong>We change:</strong> colors, fonts and layout; headlines and page copy, written in your voice; your story, mission and vision; photos, offers and calls to action.</p><p><strong>We leave exactly as it is:</strong> your funnels and pipelines, workflows and automations, calendars and integrations, contacts and CRM data.</p></details>
-      <details><summary>Will you touch my automations?</summary><p>No. We change how your pages look and read. Your funnels, workflows, calendars and contacts stay exactly as they are.</p></details>
       <details><summary>How do you get into my GHL account? Do I share my password?</summary><p>No password needed. You add us as a user on your GHL sub-account, and you can remove our access anytime.</p></details>
       <details><summary>What do I need to send?</summary><p>Your logo, colors, fonts, photos and offers, plus anything that describes your business: a brochure, a price list, your old website. No brand kit yet? Tell us when you request your mockup and we’ll talk through options.</p></details>
-      <details><summary>What does “7 days or less” mean?</summary><p>Seven business days from the day we have your access and materials. Weekends aren’t counted.</p></details>
-      <details><summary>What if I don’t love it?</summary><p>You get up to 2 rounds of revisions, so you can tell us what to change before it goes live.</p></details>
       <details><summary>Is hosting included?</summary><p>Your site stays in your own GHL account. You keep paying GoHighLevel and your domain as usual; there’s no extra hosting fee from us.</p></details>
-      <details><summary>What if I want to make changes weeks or months after you hand it to me?</summary><p>Add our optional care plan: $20 a month for 2 small edits a month and weekly group office hours. Prefer a one-off session? Consults are $50 for 30 minutes or $100 for an hour. Skip both and your site keeps running.</p></details>
+      <details><summary>What if I want to make changes weeks or months after you hand it to me?</summary><p>Add our optional care plan: $20 a month for 2 small edits a month and weekly group office hours. Prefer a one-off session? They’re $50 for 30 minutes or $100 for an hour. Skip both and your site keeps running.</p></details>
       <details><summary>Do you do landing pages too?</summary><p>Yes. One page that sells your offer, with the same brand fit and voice, for $299. It includes 1 round of revisions and goes live in 3 business days, inside your own GHL account.</p></details>
-      <details><summary>Can my coach or agency buy this for our whole group?</summary><p>Yes. Partners pay the same $499 per website and can add their own markup.</p></details>
       <details><summary>Is the mockup really free?</summary><p>Yes. We redesign the top section of your homepage in your brand, with a watermark, so you can see the difference. Love it? We build the rest for $499. Not for you? No charge, no follow-up spam.</p></details>
     </div>
   </div>
@@ -849,6 +850,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
       <h2>Make it <span class="tan">yours.</span></h2>
       <p class="lede">Get a free homepage mockup.</p>
       <p class="sec-sub" style="margin-top:14px;color:var(--on-dark);max-width:500px">Send us your GHL site and we’ll redesign the top of your homepage around your brand, before you pay anything. Love it? It’s live in 7 days or less for $499.</p>
+      <a class="skip-mock" href="https://calendar.app.google/jqoGi9ncRTnpV6tU9" target="_blank" rel="noopener"><span>Ready now?</span> Skip the free mockup and schedule a free strategy call <i aria-hidden="true">→</i></a>
     </div>
     <div class="form-card rv" style="--d:.1s">
       <!-- SET THIS before launch: paste the Google Apps Script web app URL into data-endpoint. See ../form-setup/. -->
