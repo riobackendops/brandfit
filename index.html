@@ -433,6 +433,7 @@ details p{padding:0 30px 22px 0;color:var(--body)}
 .form-card{background:var(--cream);color:var(--ink);border-radius:20px;padding:clamp(22px,3vw,34px);box-shadow:0 34px 70px -34px #000}
 .form-card h3{font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--wine);margin-bottom:18px}
 .field{display:block;margin-bottom:15px}
+.field[hidden]{display:none}
 .field>span,.legend{display:block;font-weight:600;font-size:15px;line-height:1.3;margin-bottom:6px}
 .field small,.help{display:block;font-size:13.5px;font-weight:400;line-height:1.4;color:var(--body);margin-bottom:7px}
 .opt{font-weight:400;color:var(--body)}
@@ -855,21 +856,23 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
         <input type="hidden" name="interest" id="interest" value="Website">
         <input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
         <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
-        <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        <fieldset>
+          <legend class="legend">How should we reach you?</legend>
+          <div class="opts">
+            <label><input type="radio" name="reach" value="WhatsApp" required><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</label>
+            <label><input type="radio" name="reach" value="Email"><svg aria-hidden="true"><use href="#i-send"/></svg>Email</label>
+          </div>
+        </fieldset>
+        <label class="field" id="whatsappWrap" hidden><span>WhatsApp number</span><small>Include your country code</small><input type="tel" name="whatsapp" id="whatsappInput" autocomplete="tel" pattern="[0-9+()\s\-]{7,}" disabled></label>
+        <label class="field" id="emailWrap" hidden><span>Email</span><input type="email" name="email" id="emailInput" autocomplete="email" disabled></label>
         <label class="field"><span>Your current website <span class="opt">(optional)</span></span><small>Your GHL site link, if you have one</small><input type="text" inputmode="url" name="website" autocomplete="url"></label>
         <label class="field"><span>About your business</span><small>What you sell, who it’s for, and what makes you different</small><textarea name="about" required></textarea></label>
+        <label class="field"><span>Your brand colors, brand kit or inspiration</span><small>Share your colors, a brand kit link, a website you love, a Pinterest board, or anything else that shows your style</small><textarea name="inspiration" required></textarea></label>
         <div class="field">
           <span id="fileLabel">Upload files <span class="opt">(optional)</span></span>
           <small>Brochure, price list, logo, photos: anything that tells us about you</small>
           <label class="file"><input type="file" name="files" id="files" multiple aria-labelledby="fileLabel"><b>Choose files</b><em id="fileNames">No files chosen</em></label>
         </div>
-        <fieldset>
-          <legend class="legend">How should we reach you?</legend>
-          <div class="opts">
-                        <label><input type="radio" name="reach" value="WhatsApp" required><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</label>
-            <label><input type="radio" name="reach" value="Email"><svg aria-hidden="true"><use href="#i-send"/></svg>Email</label>
-          </div>
-        </fieldset>
         <button class="btn" type="submit" id="submitBtn">Get my free homepage mockup</button>
         <div id="formMsg" class="notice" role="alert" hidden></div>
         <p class="under">Your free mockup covers the top section of your homepage, redesigned in your brand with a watermark, delivered in 2–3 business days. One mockup per business.</p>
@@ -1072,6 +1075,23 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   var names = document.getElementById('fileNames');
 
   function say(html){ msg.innerHTML = html; msg.hidden = false; }
+
+  var whatsappWrap = document.getElementById('whatsappWrap');
+  var whatsappInput = document.getElementById('whatsappInput');
+  var emailWrap = document.getElementById('emailWrap');
+  var emailInput = document.getElementById('emailInput');
+  function setContact(wrap, input, on){
+    wrap.hidden = !on;
+    input.disabled = !on;
+    input.required = on;
+    if (!on) input.value = '';
+  }
+  form.querySelectorAll('input[name=reach]').forEach(function(r){
+    r.addEventListener('change', function(){
+      setContact(whatsappWrap, whatsappInput, form.reach.value === 'WhatsApp');
+      setContact(emailWrap, emailInput, form.reach.value === 'Email');
+    });
+  });
 
   files.addEventListener('change', function(){
     var n = files.files.length;
