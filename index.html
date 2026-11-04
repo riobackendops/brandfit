@@ -115,7 +115,7 @@ h2{font-size:clamp(33px,4.6vw,54px);line-height:1.08;font-weight:700;letter-spac
 
 .stage{position:relative;aspect-ratio:530/392;max-width:560px;container-type:inline-size}
 .lap{position:absolute;left:50%;top:14.8%;width:60%;margin-left:-30%;container-type:inline-size;filter:drop-shadow(0 26px 30px rgba(24,17,9,.35))}
-.lap-lid{background:#1B1B1D;border-radius:3cqw 3cqw 0 0;padding:2.4cqw 2.4cqw 3cqw}
+.lap-lid{background:#111827;border-radius:3cqw 3cqw 0 0;padding:2.4cqw 2.4cqw 3cqw}
 .lap-page{position:relative;aspect-ratio:16/10.4;overflow:hidden;border-radius:.8cqw;background:#16213A;color:#F5F1E8;font-family:var(--serif);line-height:1}
 .lap-page *{box-sizing:border-box}
 .lap-page::after{content:"";position:absolute;right:-11cqw;bottom:-23cqw;width:62cqw;height:62cqw;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2B3A5C,#1C2946 70%)}
@@ -141,14 +141,15 @@ h2{font-size:clamp(33px,4.6vw,54px);line-height:1.08;font-weight:700;letter-spac
 .el-voice{top:47%;left:-8%}
 .el-style{top:50%;right:-7%}
 .el-offer{bottom:0;left:calc(50% - 13.4cqw);width:26.8cqw}
-.el-logo{background:#16213A;color:#F5F1E8;border-radius:.43em;padding:.62em .3em;text-align:center;font-family:var(--sans);font-weight:600;font-size:.74em;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.el-logo{background:#111827;color:#fff;border-radius:.43em;padding:.55em .3em;text-align:center;font-family:"Manrope",sans-serif;font-weight:800;font-size:.8em;white-space:nowrap}
+.el-logo i{font-style:normal;color:#14B8A6;margin-right:.25em}
 .el .swatches{gap:.29em}
 .el .swatches i{border-radius:.35em}
-.el-quote{background:#F5F1E8;color:#16213A;border-radius:.75em .75em .75em .17em;padding:.5em .67em;font-size:.86em;line-height:1.3;font-weight:500}
+.el-quote{background:#E3F5F1;color:#0F766E;border-radius:.75em .75em .75em .17em;padding:.5em .67em;font-size:.86em;line-height:1.3;font-weight:500}
 .el-aa{display:flex;align-items:baseline;gap:.58em;font-size:.86em;line-height:1.2;color:var(--body)}
-.el-aa b{font-family:var(--serif);font-weight:400;font-size:2.1em;color:#16213A}
+.el-aa b{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.75em;color:#111827}
 .el-offer p{font-size:.89em;line-height:1.3;font-weight:600}
-.el-offer small{display:block;font-size:.92em;font-weight:500;color:#8A6A3A;margin-top:.15em}
+.el-offer small{display:block;font-size:.92em;font-weight:500;color:#0F9488;margin-top:.15em}
 
 /* Browser mockups (everything inside .screen is sized in em so it scales with the frame) */
 .browser{container-type:inline-size;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
@@ -263,7 +264,7 @@ h2{font-size:clamp(33px,4.6vw,54px);line-height:1.08;font-weight:700;letter-spac
 .s-yours .bar{background:#F7F7F5}
 .s-yours .bar i:nth-child(3){background:#34C759}
 .s-yours .bar span{margin-inline:auto;box-shadow:0 0 0 1px #E5E7EB;color:#6B7280;transform:translateX(-4cqw)}
-.s-yours .screen{font-size:2.72cqw;height:68cqw;background:radial-gradient(60% 70% at 10% 10%,#E4F5F1,transparent 70%),radial-gradient(50% 60% at 92% 62%,#E9F6F3,transparent 70%),#FBFCFB;color:#374151;font-family:"Inter",sans-serif;padding:0}
+.y-screen{position:relative;overflow:hidden;line-height:1.2;font-size:2.5cqw;aspect-ratio:16/10.4;border-radius:.8cqw;background:radial-gradient(60% 70% at 10% 10%,#E4F5F1,transparent 70%),radial-gradient(50% 60% at 92% 62%,#E9F6F3,transparent 70%),#FBFCFB;color:#374151;font-family:"Inter",sans-serif;padding:0}
 .y-hero{padding:1.4em 2em 0;text-align:center}
 .y-h{font-family:"Manrope",sans-serif;font-weight:800;font-size:2.3em;line-height:1.1;letter-spacing:-.025em;color:#111827}
 .y-h span{display:block;color:#14B8A6}
@@ -317,27 +318,27 @@ h2{font-size:clamp(33px,4.6vw,54px);line-height:1.08;font-weight:700;letter-spac
 .y-flow.run li.on{opacity:1}
 .y-flow.run li.cur em{background:#14B8A6;color:#111827;box-shadow:0 0 0 .22em rgba(20,184,166,.25)}
 .y-caret{display:inline-block;width:.07em;height:.92em;margin-left:.05em;background:#14B8A6;vertical-align:-.08em;animation:type-blink .9s step-end infinite}
-.y-toast{position:absolute;z-index:3;background:#fff;color:#111827;font-family:"Inter",sans-serif;border-radius:9px;box-shadow:0 14px 28px -12px rgba(0,0,0,.65);padding:7px 11px;font-size:11.5px;line-height:1.25;white-space:nowrap}
+.y-toast{position:absolute;z-index:3;width:max-content;background:#fff;color:#111827;font-family:"Inter",sans-serif;border-radius:9px;box-shadow:0 14px 28px -12px rgba(0,0,0,.65);padding:7px 11px;font-size:11.5px;line-height:1.25;white-space:nowrap}
 .y-toast b{display:block;font-family:"Manrope",sans-serif;font-weight:800;font-size:12px}
 .y-toast small{color:#6B7280;font-size:10.5px}
-.y-toast.a{top:16px;right:-12px;animation:float-a 6s ease-in-out infinite}
-.y-toast.b{bottom:-11px;right:26px;border-radius:99px;padding:6px 12px;font-weight:600;animation:float-b 7s ease-in-out infinite .5s}
+.y-toast.a{top:9%;left:calc(50% - 56px);animation:float-a 6s ease-in-out infinite}
+.y-toast.b{bottom:15%;right:2%;border-radius:99px;padding:6px 12px;font-weight:600;animation:float-b 7s ease-in-out infinite .5s}
 .y-toast.b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#14B8A6;margin-right:6px;vertical-align:1px}
 .kit{display:grid;gap:10px;min-width:0}
 .kit-card{background:var(--cream);color:var(--ink);border-radius:12px;padding:11px 12px;min-width:0;transition:transform .3s var(--ease)}
 .kit-card:hover{transform:translateY(-3px)}
 .kit-card h4{margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
 .kit-logo{background:#111827;border-radius:7px;padding:13px 6px;text-align:center;font-family:"Manrope",sans-serif;font-weight:800;font-size:clamp(12px,1.12vw,14.5px);color:#fff;letter-spacing:-.01em;white-space:nowrap}
-.kit-logo b{color:#14B8A6;font-weight:800;margin-right:.3em}
+.kit-logo-g{background:#16213A;color:#F5F1E8;font-family:var(--sans);font-weight:600;letter-spacing:.18em;font-size:clamp(11px,.95vw,13px)}
 .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .swatches i{display:block;aspect-ratio:1;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(24,17,9,.1)}
 .kit-fonts{display:flex;align-items:baseline;gap:14px;line-height:1.1}
-.kit-fonts span:first-child{font-family:"Manrope",sans-serif;font-weight:800;font-size:25px}
-.kit-fonts span:last-child{font-family:"Inter",sans-serif;font-weight:400;font-size:25px;color:#0F9488}
+.kit-fonts span:first-child{font-family:var(--serif);font-weight:400;font-size:29px;color:#16213A}
+.kit-fonts span:last-child{font-family:var(--sans);font-weight:500;font-size:25px;color:#8A6A3A}
 .kit-days{list-style:none;margin:0 -5px;padding:0;display:grid;gap:2px;font-size:12.5px;line-height:1.25;color:#374151}
 .kit-days li{padding:3px 5px;border-radius:6px;box-shadow:inset 0 0 0 1px transparent;transition:background-color .4s,box-shadow .4s}
-.kit-days li.on{background:#DDF3EE;box-shadow:inset 0 0 0 1px #9ADBCF}
-.kit-days b{font-family:"Manrope",sans-serif;font-weight:800;color:#0F9488;margin-right:4px}
+.kit-days li.on{background:#EFE5D2;box-shadow:inset 0 0 0 1px #C7A46C}
+.kit-days b{font-family:var(--sans);font-weight:700;color:#8A6A3A;margin-right:4px}
 .demo-end{margin-top:clamp(44px,6vw,76px);text-align:center}
 .demo-end strong{display:block;font-size:clamp(46px,7.4vw,96px);line-height:1;font-weight:700;letter-spacing:-.035em;color:var(--cream)}
 .demo-end strong span{color:var(--tan)}
@@ -489,7 +490,6 @@ footer .links b{font-weight:600;color:var(--cream)}
   .c-before{max-width:300px;width:100%}
   .c-arrow{justify-content:flex-start;padding-left:18px}
   .c-arrow svg{width:30px;height:30px;animation-name:arrow-nudge-down}
-  .y-toast.a{top:-6px;right:6px}
   .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
   #pricing .wrap{grid-template-columns:minmax(0,1fr);row-gap:28px}
   .prices{max-width:560px}
@@ -498,6 +498,8 @@ footer .links b{font-weight:600;color:var(--cream)}
   body{font-size:16.5px}
   .clones{grid-template-columns:repeat(3,minmax(0,1fr))}
   .clone:nth-child(n+7){display:none}
+  .y-toast{display:none}
+  .el-logo{font-size:.68em;letter-spacing:-.015em}
   .stage{aspect-ratio:530/500}
   .lap{top:15%;width:76%;margin-left:-38%}
   .el{width:31cqw}
@@ -596,27 +598,21 @@ footer .links b{font-weight:600;color:var(--cream)}
       <figure class="c-yours rv" style="--d:.14s">
         <span class="c-label">Your design</span>
         <div class="browser s-yours">
-          <div class="bar"><i></i><i></i><i></i><span>backendoperators.com</span></div>
-          <div class="screen">
-            <div class="y-hero">
-              <div class="y-h">Websites and Funnels that convert. <span id="yType">Live in <em>a week</em><i>.</i></span></div>
-              <div class="y-sub">A funnel, website or BOTH built to turn your visitors into booked calls and paid sales, <b>not just another page that looks nice</b>.</div>
-            </div>
-            <div class="y-bento" aria-hidden="true">
-              <div class="y-tile"><h5>AI ENHANCED</h5><div class="y-msg me" id="yMe">How do I start?</div><div class="y-typing off" id="yDots"><i></i><i></i><i></i></div><div class="y-msg bot" id="yBot">Book a free Discovery Call. Want the link?</div></div>
-              <div class="y-tile"><h5>REVENUE</h5><div class="y-rev"><small>Sales this week</small><b id="yAmt">$18,340</b><span class="y-bill">$</span><span class="y-bill">$</span><div class="y-bars" id="yBars"><u style="height:30%"></u><u style="height:38%"></u><u style="height:34%"></u><u style="height:52%"></u><u style="height:66%"></u><u style="height:82%"></u><u style="height:100%"></u></div></div></div>
-              <div class="y-tile"><h5>AUTOMATION</h5><ol class="y-flow" id="yFlow"><li><em>1</em>Call booked</li><li><em>2</em>Confirmation sent</li><li><em>3</em>24-hr reminder</li><li><em>4</em>Post-call follow-up</li></ol></div>
-            </div>
+          <div class="bar"><i></i><i></i><i></i><span>yourbrand.com</span></div>
+          <div class="lap-page">
+            <div class="lap-brand">Your Brand</div>
+            <div class="lap-line"></div>
+            <div class="lap-h"><span>Your offer,</span><span>in your voice.</span><small>Made to look like</small></div>
+            <div class="lap-you">you.</div>
+            <div class="lap-seal"><svg viewBox="0 0 100 100"><defs><path id="lapCircle" d="M50 50m-39 0a39 39 0 1 1 78 0a39 39 0 1 1-78 0"/></defs><text><textPath href="#lapCircle">YOUR STORY • YOUR STYLE • YOUR OFFER •</textPath></text></svg><b>Y</b></div>
           </div>
         </div>
-        <div class="y-toast a" aria-hidden="true"><b>New sale</b><small>Checkout completed</small></div>
-        <div class="y-toast b" aria-hidden="true">Payment received</div>
       </figure>
       <aside class="kit rv" style="--d:.2s" aria-label="The brand kit behind this design">
-        <div class="kit-card"><h4>Logo</h4><div class="kit-logo"><b>{ }</b>BackendOperators</div></div>
-        <div class="kit-card"><h4>Colors</h4><div class="swatches" role="img" aria-label="Teal, deep teal, charcoal and off-white"><i style="background:#14B8A6"></i><i style="background:#0F9488"></i><i style="background:#111827"></i><i style="background:#F6FAF9"></i></div></div>
+        <div class="kit-card"><h4>Logo</h4><div class="kit-logo kit-logo-g">YOUR BRAND</div></div>
+        <div class="kit-card"><h4>Colors</h4><div class="swatches" role="img" aria-label="Your brand colors"><i style="background:#16213A"></i><i style="background:#C7A46C"></i><i style="background:#8A6A3A"></i><i style="background:#F5F1E8"></i></div></div>
         <div class="kit-card"><h4>Fonts</h4><div class="kit-fonts" aria-hidden="true"><span>Aa</span><span>Aa</span></div></div>
-        <div class="kit-card"><h4>Process</h4><ul class="kit-days" id="kDays"><li><b>Day 1</b>The Blueprint</li><li><b>Day 5</b>Tech Setup</li><li><b>Day 7</b>Move-In Day</li></ul></div>
+        <div class="kit-card"><h4>Process</h4><ul class="kit-days" id="kDays"><li><b>Day 1</b>Your brief</li><li><b>Day 5</b>Your review</li><li><b>Day 7</b>You go live</li></ul></div>
       </aside>
     </div>
     <div class="demo-end rv">
@@ -635,20 +631,26 @@ footer .links b{font-weight:600;color:var(--cream)}
       <p class="pitch-lead rv" style="--d:.08s">We turn it into a personalized, professional website built around your brand, your voice and your offer, without touching a single automation.</p>
       <div class="stage">
         <div class="lap rv" style="--d:.14s" aria-hidden="true">
-          <div class="lap-lid"><div class="lap-page">
-            <div class="lap-brand">Your Brand</div>
-            <div class="lap-line"></div>
-            <div class="lap-h"><span>Your offer,</span><span>in your voice.</span><small>Made to look like</small></div>
-            <div class="lap-you">you.</div>
-            <div class="lap-seal"><svg viewBox="0 0 100 100"><defs><path id="lapCircle" d="M50 50m-39 0a39 39 0 1 1 78 0a39 39 0 1 1-78 0"/></defs><text><textPath href="#lapCircle">YOUR STORY • YOUR STYLE • YOUR OFFER •</textPath></text></svg><b>Y</b></div>
+          <div class="lap-lid"><div class="y-screen">
+            <div class="y-hero">
+              <div class="y-h">Websites and Funnels that convert. <span id="yType">Live in <em>a week</em><i>.</i></span></div>
+              <div class="y-sub">A funnel, website or BOTH built to turn your visitors into booked calls and paid sales, <b>not just another page that looks nice</b>.</div>
+            </div>
+            <div class="y-bento" aria-hidden="true">
+              <div class="y-tile"><h5>AI ENHANCED</h5><div class="y-msg me" id="yMe">How do I start?</div><div class="y-typing off" id="yDots"><i></i><i></i><i></i></div><div class="y-msg bot" id="yBot">Book a free Discovery Call. Want the link?</div></div>
+              <div class="y-tile"><h5>REVENUE</h5><div class="y-rev"><small>Sales this week</small><b id="yAmt">$18,340</b><span class="y-bill">$</span><span class="y-bill">$</span><div class="y-bars" id="yBars"><u style="height:30%"></u><u style="height:38%"></u><u style="height:34%"></u><u style="height:52%"></u><u style="height:66%"></u><u style="height:82%"></u><u style="height:100%"></u></div></div></div>
+              <div class="y-tile"><h5>AUTOMATION</h5><ol class="y-flow" id="yFlow"><li><em>1</em>Call booked</li><li><em>2</em>Confirmation sent</li><li><em>3</em>24-hr reminder</li><li><em>4</em>Post-call follow-up</li></ol></div>
+            </div>
           </div></div>
           <div class="lap-base"></div>
         </div>
-        <div class="el el-brand rv" style="--d:.2s"><div class="el-in"><h4>Branding</h4><div class="el-logo">Your Brand</div></div></div>
-        <div class="el el-colors rv" style="--d:.26s"><div class="el-in"><h4>Colors</h4><div class="swatches" role="img" aria-label="Your brand colors"><i style="background:#16213A"></i><i style="background:#C7A46C"></i><i style="background:#8A6A3A"></i><i style="background:#F5F1E8"></i></div></div></div>
-        <div class="el el-voice rv" style="--d:.32s"><div class="el-in"><h4>Personality</h4><div class="el-quote">Sounds like you, not a template.</div></div></div>
-        <div class="el el-style rv" style="--d:.38s"><div class="el-in"><h4>Style</h4><div class="el-aa"><b>Aa</b><span>Your fonts and look</span></div></div></div>
-        <div class="el el-offer rv" style="--d:.44s"><div class="el-in"><h4>Offer</h4><p>Your signature offer<small>Front and center</small></p></div></div>
+        <div class="y-toast a" aria-hidden="true"><b>New sale</b><small>Checkout completed</small></div>
+        <div class="y-toast b" aria-hidden="true">Payment received</div>
+        <div class="el el-brand rv" style="--d:.2s"><div class="el-in"><h4>Branding</h4><div class="el-logo"><i>{ }</i>BackendOperators</div></div></div>
+        <div class="el el-colors rv" style="--d:.26s"><div class="el-in"><h4>Colors</h4><div class="swatches" role="img" aria-label="Teal, deep teal, charcoal and off-white"><i style="background:#14B8A6"></i><i style="background:#0F9488"></i><i style="background:#111827"></i><i style="background:#F6FAF9"></i></div></div></div>
+        <div class="el el-voice rv" style="--d:.32s"><div class="el-in"><h4>Personality</h4><div class="el-quote">Direct. Warm. No fluff.</div></div></div>
+        <div class="el el-style rv" style="--d:.38s"><div class="el-in"><h4>Style</h4><div class="el-aa"><b>Aa</b><span>Clean and modern</span></div></div></div>
+        <div class="el el-offer rv" style="--d:.44s"><div class="el-in"><h4>Offer</h4><p>Websites and funnels<small>Live in a week</small></p></div></div>
       </div>
       <div class="cta-row rv">
         <a class="btn" href="#mockup">Get my free homepage mockup <span class="arrow" aria-hidden="true">→</span></a>
@@ -937,12 +939,18 @@ footer .links b{font-weight:600;color:var(--cream)}
       Array.prototype.forEach.call(days, function(li, i){ li.classList.toggle('on', i === day); });
       t++;
     }
-    new IntersectionObserver(function(es){
-      if (es[0].isIntersecting) {
-        if (!typed) { typed = true; typeHeadline(); }
-        if (!timer) { tick(); timer = setInterval(tick, 900); }
-      } else { clearInterval(timer); timer = null; }
-    }, { threshold: 0.2 }).observe(compare);
+    var showing = 0, stage = document.querySelector('.stage');
+    var seen = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        showing += en.isIntersecting ? 1 : (en.target.dataset.on ? -1 : 0);
+        en.target.dataset.on = en.isIntersecting ? '1' : '';
+        if (en.isIntersecting && en.target === stage && !typed) { typed = true; typeHeadline(); }
+      });
+      if (showing > 0 && !timer) { tick(); timer = setInterval(tick, 900); }
+      if (showing <= 0 && timer) { clearInterval(timer); timer = null; }
+    }, { threshold: 0.2 });
+    seen.observe(compare);
+    seen.observe(stage);
   })();
 
   /* Remember which offer sent them to the form */
