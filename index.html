@@ -446,15 +446,13 @@ input:focus,textarea:focus{outline:0;border-color:var(--wine);box-shadow:0 0 0 3
 .file b{font-weight:600;font-size:14.5px;white-space:nowrap}
 .file em{font-style:normal;font-size:14px;color:var(--body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 fieldset{border:0;margin:0 0 15px;padding:0}
-.opts{display:grid;gap:8px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .opts label{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 15px;font-weight:600;cursor:pointer;transition:background-color .2s,border-color .2s}
 .opts label:hover{border-color:var(--wine)}
 .opts input{position:absolute;opacity:0;width:1px;height:1px}
 .opts svg{flex:none;width:20px;height:20px;color:var(--wine)}
 .opts label:has(input:checked){background:var(--tan);border-color:var(--wine)}
 .opts label:has(input:focus-visible){outline:2px solid var(--wine);outline-offset:2px}
-#phoneWrap[hidden]{display:none}
-#phoneWrap{margin-top:-2px}
 .form-card .btn{width:100%;margin-top:4px}
 .form-card .btn[disabled]{opacity:.65;cursor:wait;transform:none}
 .under{margin-top:14px;font-size:13.5px;line-height:1.45;color:var(--body)}
@@ -573,7 +571,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></symbol>
   <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
-  <symbol id="i-call" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c.4-3.6 2.8-5.5 6-5.5s5.600 1.900 6 5.500"/><path d="M16 4.800a3.500 3.500 0 0 1 0 6.400"/><path d="M18 14.900c1.900.8 2.900 2.500 3.100 5.100"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.500a8.500 8.500 0 0 0-7.300 12.800L3.500 20.500l4.300-1.100A8.500 8.500 0 1 0 12 3.500Z"/><path d="M8.500 12h.01M12 12h.01M15.500 12h.01"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.500 20.500 12 4 19.500l1.800-7.500L4 4.500Z"/><path d="M5.800 12h6.700"/></symbol>
 </svg>
@@ -869,19 +866,18 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
         <fieldset>
           <legend class="legend">How should we reach you?</legend>
           <div class="opts">
-            <label><input type="radio" name="reach" value="Live call" required><svg aria-hidden="true"><use href="#i-call"/></svg>Live call</label>
-            <label><input type="radio" name="reach" value="WhatsApp"><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</label>
+                        <label><input type="radio" name="reach" value="WhatsApp" required><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</label>
             <label><input type="radio" name="reach" value="Email"><svg aria-hidden="true"><use href="#i-send"/></svg>Email</label>
           </div>
         </fieldset>
-        <label class="field" id="phoneWrap" hidden><span>WhatsApp number</span><input type="tel" name="phone" id="phone" autocomplete="tel"></label>
         <button class="btn" type="submit" id="submitBtn">Get my free homepage mockup</button>
         <div id="formMsg" class="notice" role="alert" hidden></div>
         <p class="under">Your free mockup covers the top section of your homepage, redesigned in your brand with a watermark, delivered in 2–3 business days. One mockup per business.</p>
       </form>
       <div class="thanks" id="thanks" tabindex="-1" hidden>
         <h3>Got it.</h3>
-        <p>We’ll start on your mockup and send it by your chosen channel within 2–3 business days.</p>
+        <p id="thanksMsg">We’ll start on your mockup and send it by your chosen channel within 2–3 business days.</p>
+        <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener" hidden style="margin-top:18px">Open WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -896,7 +892,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
       <b>Contact us</b>
       <a href="https://wa.me/639198565377" target="_blank" rel="noopener">WhatsApp</a>
       <a href="mailto:info@backendoperators.com">Email</a>
-      <a href="https://calendar.app.google/jqoGi9ncRTnpV6tU9" target="_blank" rel="noopener">Schedule a Call</a>
     </span>
   </div>
 </footer>
@@ -1071,23 +1066,12 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
 
   /* Form */
   var form = document.getElementById('mockupForm');
-  var phoneWrap = document.getElementById('phoneWrap');
-  var phone = document.getElementById('phone');
   var msg = document.getElementById('formMsg');
   var btn = document.getElementById('submitBtn');
   var files = document.getElementById('files');
   var names = document.getElementById('fileNames');
 
   function say(html){ msg.innerHTML = html; msg.hidden = false; }
-
-  form.querySelectorAll('input[name=reach]').forEach(function(r){
-    r.addEventListener('change', function(){
-      var wa = form.reach.value === 'WhatsApp';
-      phoneWrap.hidden = !wa;
-      phone.required = wa;
-      if (!wa) phone.value = '';
-    });
-  });
 
   files.addEventListener('change', function(){
     var n = files.files.length;
@@ -1123,6 +1107,9 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
       });
     }
 
+    var usesWhatsApp = form.reach.value === 'WhatsApp';
+    var waWindow = usesWhatsApp ? window.open('', '_blank') : null;
+
     btn.disabled = true;
     Promise.all(picked.map(readFile))
       .then(function(uploads){
@@ -1141,9 +1128,19 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
         var thanks = document.getElementById('thanks');
         form.hidden = true;
         thanks.hidden = false;
+        if (usesWhatsApp) {
+          var text = 'Hi Brandfit! I just requested my free homepage mockup. My name is ' + form.elements.name.value.trim() + '.';
+          var waUrl = 'https://wa.me/639198565377?text=' + encodeURIComponent(text);
+          document.getElementById('thanksMsg').textContent = 'One last step: tap send on the WhatsApp message we opened for you. We’ll send your mockup there within 2–3 business days.';
+          var waBtn = document.getElementById('waBtn');
+          waBtn.href = waUrl;
+          waBtn.hidden = false;
+          if (waWindow) waWindow.location.href = waUrl;
+        }
         thanks.focus();
       })
       .catch(function(){
+        if (waWindow) waWindow.close();
         btn.disabled = false;
         say('That didn’t go through. Please try again, or message us on <a href="https://wa.me/639198565377">WhatsApp</a>.');
       });
