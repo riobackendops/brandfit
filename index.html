@@ -341,7 +341,7 @@ h2{font-size:clamp(33px,4.6vw,54px);line-height:1.08;font-weight:700;letter-spac
 .kit-days b{font-family:var(--sans);font-weight:700;color:#8D112B;margin-right:4px}
 .demo-end{margin-top:clamp(44px,6vw,76px);text-align:center}
 .demo-end strong{display:block;font-size:clamp(46px,7.4vw,96px);line-height:1;font-weight:700;letter-spacing:-.035em;color:var(--cream)}
-.demo-end strong span{color:var(--tan)}
+.demo-end .strike{color:var(--tan)}
 .demo-end p>span{display:block;margin-top:clamp(10px,1.4vw,16px);font-family:var(--serif);font-style:italic;font-size:clamp(25px,3vw,38px);line-height:1.15}
 
 /* Proof */
@@ -472,6 +472,24 @@ footer a{text-underline-offset:3px}
 footer .links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
 footer .links b{font-weight:600;color:var(--cream)}
 
+/* Page-wide motion */
+.scroll-bar{position:fixed;left:0;top:0;right:0;height:3px;z-index:30;background:linear-gradient(90deg,var(--tan),#E5354F);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.wr{display:inline-block;opacity:0;transform:translateY(.42em);transition:opacity .55s ease,transform .75s var(--ease);transition-delay:calc(var(--i)*50ms)}
+.wr-in .wr{opacity:1;transform:none}
+.demo-end .strike{position:relative;display:inline-block}
+.demo-end .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:56%;height:.065em;border-radius:99px;background:#E5354F;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease) .75s}
+.demo-end strong.wr-in .strike::after{transform:scaleX(1)}
+.js .clones .clone{opacity:0;transform:translateY(10px) scale(.9);transition:opacity .45s ease,transform .55s var(--ease);transition-delay:calc(var(--ci,0)*55ms + .15s)}
+.js .clones.in .clone{opacity:1;transform:none}
+.cta-row .btn,.price .btn,#submitBtn,.how .btn{position:relative;overflow:hidden}
+.cta-row .btn::after,.price .btn::after,#submitBtn::after,.how .btn::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:28%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);animation:btn-sheen 5s ease-in-out infinite;pointer-events:none}
+@keyframes btn-sheen{0%,62%{left:-40%}100%{left:125%}}
+details[open] p{animation:faq-in .45s var(--ease) both}
+details[open] p:nth-of-type(2){animation-delay:.06s}
+details[open] p:nth-of-type(3){animation-delay:.12s}
+@keyframes faq-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.c-yours .browser{transition:transform .35s var(--ease),box-shadow .35s;will-change:transform}
+
 /* Reveal: only hides content once JS has confirmed it can show it again */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:var(--d,0s)}
 .js .rv.in{opacity:1;transform:none}
@@ -536,7 +554,9 @@ footer .links b{font-weight:600;color:var(--cream)}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
   .js .rv{opacity:1;transform:none}
-  .y-toast,.y-msg,.y-typing,.c-arrow svg,.y-caret,.el-in,.lap-seal svg,.b-head,.b-line,.b-err,.pv-cursor,.t-play,.t-bar u,.t-days span::after,.s-row .clone,.pv-old b::after,.pv-days i,.step{animation:none!important}
+  .y-toast,.y-msg,.y-typing,.c-arrow svg,.y-caret,.el-in,.lap-seal svg,.b-head,.b-line,.b-err,.pv-cursor,.t-play,.t-bar u,.t-days span::after,.s-row .clone,.pv-old b::after,.pv-days i,.step,.cta-row .btn::after,.price .btn::after,#submitBtn::after,.how .btn::after,details[open] p{animation:none!important}
+  .scroll-bar{display:none}
+  .js .clones .clone{opacity:1;transform:none}
   .b-err{opacity:1}
   .t-bar u{width:92%}
   .c-arrow svg{transform:none}
@@ -616,7 +636,7 @@ footer .links b{font-weight:600;color:var(--cream)}
       </aside>
     </div>
     <div class="demo-end rv">
-      <p><strong>Ditch the <span>template.</span></strong> <span>Get a website that’s unmistakably you.</span></p>
+      <p><strong>Ditch the <span class="strike">template.</span></strong> <span>Get a website that’s unmistakably you.</span></p>
     </div>
   </div>
 </section>
@@ -951,6 +971,97 @@ footer .links b{font-weight:600;color:var(--cream)}
     }, { threshold: 0.2 });
     seen.observe(compare);
     seen.observe(stage);
+  })();
+
+  /* Page-wide motion */
+  (function(){
+    if (reduce || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.demo-end strong').forEach(function(el){ el.classList.add('wr-in'); });
+      return;
+    }
+
+    /* Scroll progress */
+    var bar = document.createElement('div');
+    bar.className = 'scroll-bar';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var ticking = false;
+    function paint(){
+      var max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+      ticking = false;
+    }
+    addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
+
+    /* Headlines rise in word by word */
+    function splitWords(root){
+      var i = 0;
+      (function walk(node){
+        Array.prototype.slice.call(node.childNodes).forEach(function(child){
+          if (child.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach(function(part){
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+              var w = document.createElement('span');
+              w.className = 'wr';
+              w.style.setProperty('--i', i++);
+              w.textContent = part;
+              frag.appendChild(w);
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === 1 && child.tagName !== 'MARK') {
+            walk(child);
+          }
+        });
+      })(root);
+    }
+    var heads = document.querySelectorAll('main h1, main h2, .p-kick p, .demo-end strong, .pitch-end');
+    var headIO = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('wr-in'); headIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    heads.forEach(function(h){ splitWords(h); headIO.observe(h); });
+
+    /* The wall of identical templates fills in one by one */
+    document.querySelectorAll('.clones .clone').forEach(function(c, n){ c.style.setProperty('--ci', n); });
+
+    /* Numbers count when they scroll into view */
+    function countOnView(el, from, to, format){
+      var io = new IntersectionObserver(function(es){
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        var start = performance.now();
+        (function step(now){
+          var p = Math.min((now - start) / 1300, 1);
+          el.textContent = format(Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(step);
+        })(start);
+      }, { threshold: 0.4 });
+      el.textContent = format(from);
+      io.observe(el);
+    }
+    document.querySelectorAll('.stat b').forEach(function(b){
+      var m = b.textContent.match(/^(.*?)(\d+)(\D*)$/);
+      if (m) countOnView(b, 0, +m[2], function(v){ return m[1] + v + m[3]; });
+    });
+    var priceNew = document.querySelector('.pv-new b');
+    if (priceNew) countOnView(priceNew, 3700, 499, function(v){ return '$' + v.toLocaleString('en-US'); });
+
+    /* The sample design leans toward the cursor */
+    if (matchMedia('(hover: hover)').matches) {
+      var fig = document.querySelector('.c-yours');
+      var card = fig && fig.querySelector('.browser');
+      if (card) {
+        fig.addEventListener('pointermove', function(e){
+          var r = fig.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = 'perspective(900px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg) translateY(-3px)';
+        });
+        fig.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+      }
+    }
   })();
 
   /* Remember which offer sent them to the form */
