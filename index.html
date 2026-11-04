@@ -435,17 +435,12 @@ details p{padding:0 30px 22px 0;color:var(--body)}
 .skip-mock strong{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(38px,3.8vw,50px);line-height:1.05;letter-spacing:-.012em;color:var(--tan);margin-bottom:6px}
 .skip-mock .btn{position:relative;overflow:hidden;width:100%}
 .skip-mock .btn::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:28%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);animation:btn-sheen 5s ease-in-out infinite;pointer-events:none}
-.call-modal{width:min(980px,calc(100vw - 32px));height:min(780px,calc(100dvh - 32px));max-width:none;max-height:none;margin:auto;padding:0;border:0;border-radius:20px;overflow:hidden;background:var(--card);color:var(--ink);box-shadow:0 40px 90px -30px #000}
-.call-modal[open]{display:flex;flex-direction:column}
-.call-modal::backdrop{background:rgba(17,12,6,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.call-head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px 14px 24px;background:var(--ink);color:var(--cream)}
-.call-head h2{font-size:clamp(20px,2.2vw,26px);line-height:1.15;letter-spacing:-.015em}
-.call-head .serif{color:var(--tan);font-size:1.12em}
-.call-close{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:rgba(246,238,228,.12);color:var(--cream);font-size:26px;line-height:1;cursor:pointer;transition:background-color .2s}
-.call-close:hover{background:rgba(246,238,228,.26)}
+.call-drop{display:none}
+.call-drop.open{display:block}
 /* Google shows the organizer name in its top strip, so that strip is cropped out of view. */
-.call-frame-wrap{flex:1;min-height:0;overflow:hidden;position:relative;background:#fff}
-.call-modal iframe{position:absolute;left:0;top:calc(var(--crop,72px)*-1);width:100%;height:calc(100% + var(--crop,72px));border:0;background:#fff}
+.call-frame-wrap{position:relative;height:880px;margin-top:16px;border-radius:12px;overflow:hidden;background:#fff}
+.call-frame-wrap iframe{position:absolute;left:0;top:-150px;width:100%;height:1030px;border:0;background:#fff}
+.final .copy.has-cal{position:static}
 .form-card{background:var(--cream);color:var(--ink);border-radius:20px;padding:clamp(22px,3vw,34px);box-shadow:0 34px 70px -34px #000}
 .form-card h3{font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--wine);margin-bottom:18px}
 .field{display:block;margin-bottom:15px}
@@ -546,7 +541,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   .glow-bl{background:radial-gradient(150% 50% at 15% 60%,var(--glow) 0%,rgba(92,15,33,0) 100%),var(--ink)}
   #examples .sec-head{margin-inline:auto;text-align:center}
   #examples .sec-head h2{font-size:clamp(40px,11.4vw,56px)}
-  .call-modal{width:100vw;height:100dvh;border-radius:0;--crop:150px}
   .fit,.pains{grid-template-columns:minmax(0,1fr)}
   .pv{height:190px}
   .pain-card{--tilt:0deg!important}
@@ -864,7 +858,10 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
       <p class="sec-sub" style="margin-top:14px;color:var(--on-dark);max-width:500px">Send us your GHL site and we’ll redesign the top of your homepage around your brand, before you pay anything. Love it? It’s live in 7 days or less for $499.</p>
       <div class="skip-mock">
         <p><strong>Ready now?</strong> Skip the mockup and schedule a free Strategy Call.</p>
-        <a class="btn btn-tan" id="openCall" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3b44qBGyw7Sen_B6kiIa6hHvnCpJk6NA7f3lKmwJbbW5ijZij9CaCxIqrMamvJZuh1-8cD2Fii?gv=true" target="_blank" rel="noopener">Schedule a free Strategy Call <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-tan" id="openCall" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3b44qBGyw7Sen_B6kiIa6hHvnCpJk6NA7f3lKmwJbbW5ijZij9CaCxIqrMamvJZuh1-8cD2Fii?gv=true" target="_blank" rel="noopener" aria-expanded="false" aria-controls="callDrop"><span id="openCallText">Schedule a free Strategy Call</span> <span class="arrow" id="openCallArrow" aria-hidden="true">↓</span></a>
+        <div class="call-drop" id="callDrop" aria-hidden="true"><div>
+          <div class="call-frame-wrap"><iframe id="callFrame" title="Book a free Strategy Call" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3b44qBGyw7Sen_B6kiIa6hHvnCpJk6NA7f3lKmwJbbW5ijZij9CaCxIqrMamvJZuh1-8cD2Fii?gv=true"></iframe></div>
+        </div></div>
       </div>
     </div>
     <div class="form-card rv" style="--d:.1s">
@@ -905,14 +902,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
 </section>
 
 </main>
-
-<dialog class="call-modal" id="callModal" aria-labelledby="callTitle">
-  <div class="call-head">
-    <h2 id="callTitle">Schedule your free <span class="serif">Strategy Call</span></h2>
-    <button type="button" class="call-close" id="closeCall" aria-label="Close">×</button>
-  </div>
-  <div class="call-frame-wrap"><iframe id="callFrame" title="Book a free Strategy Call" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3b44qBGyw7Sen_B6kiIa6hHvnCpJk6NA7f3lKmwJbbW5ijZij9CaCxIqrMamvJZuh1-8cD2Fii?gv=true"></iframe></div>
-</dialog>
 
 <footer>
   <div class="wrap">
@@ -1088,21 +1077,26 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
     }
   })();
 
-  /* Strategy Call booking pop-up. Without dialog support the link opens the booking page. */
+  /* Strategy Call dropdown calendar. Without JavaScript the link opens the booking page. */
   (function(){
-    var modal = document.getElementById('callModal');
     var opener = document.getElementById('openCall');
+    var drop = document.getElementById('callDrop');
     var frame = document.getElementById('callFrame');
-    if (!modal || !opener || typeof modal.showModal !== 'function') return;
+    var label = document.getElementById('openCallText');
+    var arrow = document.getElementById('openCallArrow');
+    var copy = document.querySelector('.final .copy');
+    if (!opener || !drop || !frame) return;
     opener.addEventListener('click', function(e){
       e.preventDefault();
-      if (!frame.src) frame.src = frame.dataset.src;
-      modal.showModal();
-      document.documentElement.style.overflow = 'hidden';
+      var open = !drop.classList.contains('open');
+      if (open && !frame.src) frame.src = frame.dataset.src;
+      drop.classList.toggle('open', open);
+      drop.setAttribute('aria-hidden', open ? 'false' : 'true');
+      opener.setAttribute('aria-expanded', open ? 'true' : 'false');
+      label.textContent = open ? 'Hide the calendar' : 'Schedule a free Strategy Call';
+      arrow.textContent = open ? '↑' : '↓';
+      copy.classList.toggle('has-cal', open);
     });
-    document.getElementById('closeCall').addEventListener('click', function(){ modal.close(); });
-    modal.addEventListener('click', function(e){ if (e.target === modal) modal.close(); });
-    modal.addEventListener('close', function(){ document.documentElement.style.overflow = ''; });
   })();
 
   /* Remember which offer sent them to the form */
