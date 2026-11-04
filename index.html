@@ -504,8 +504,10 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   .how .wrap,.faq .wrap,.final .wrap{grid-template-columns:minmax(0,1fr)}
   .how .sec-head,.final .copy{position:static}
   .compare{grid-template-columns:minmax(0,1fr);gap:14px;max-width:620px;margin-inline:auto}
-  .c-before{max-width:300px;width:100%}
-  .c-arrow{justify-content:flex-start;padding-left:18px}
+  .c-before{max-width:300px;width:100%;margin-inline:auto}
+  .c-before,.c-yours{text-align:center}
+  .c-before .browser,.c-yours .browser{text-align:left}
+  .c-arrow{justify-content:center}
   .c-arrow svg{width:30px;height:30px;animation-name:arrow-nudge-down}
   .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
   #pricing .wrap{grid-template-columns:minmax(0,1fr);row-gap:28px}
@@ -527,6 +529,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   .glow-tr{background:radial-gradient(150% 55% at 85% 8%,var(--glow) 0%,rgba(92,15,33,0) 100%),var(--ink)}
   .glow-bl{background:radial-gradient(150% 50% at 15% 60%,var(--glow) 0%,rgba(92,15,33,0) 100%),var(--ink)}
   #examples .sec-head{margin-inline:auto;text-align:center}
+  #examples .sec-head h2{font-size:clamp(40px,11.4vw,56px)}
   .fit,.pains{grid-template-columns:minmax(0,1fr)}
   .pv{height:190px}
   .pain-card{--tilt:0deg!important}
@@ -540,7 +543,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
   thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
   tr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
   th,td{border:0;padding:0}
-  tbody th{font-weight:700;margin-bottom:8px}
+  tbody th{font-weight:700;margin-bottom:8px;text-align:right}
   td{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-top:1px solid var(--line);text-align:right;font-size:15px}
   td::before{content:attr(data-l);color:var(--body);text-align:left;flex:none;max-width:42%}
   td.us::before{color:var(--wine)}
@@ -582,7 +585,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
     <nav aria-label="Main">
       <ul>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#examples">Before and after</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -646,7 +648,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
     <p class="pitch-end rv" style="--d:.14s">so your site looks like every other GoHighLevel template user’s.</p>
   </div></div>
   <div class="pitch-r"><div>
-      <p class="pitch-lead rv" style="--d:.08s">We turn it into a personalized, professional website built around your brand, your voice and your offer, without touching a single automation.</p>
+      <p class="pitch-lead rv" style="--d:.08s">We turn it into a personalized, professional website built around your brand, your voice and your offer.</p>
       <div class="stage">
         <div class="lap rv" style="--d:.14s" aria-hidden="true">
           <div class="lap-lid"><div class="y-screen">
@@ -711,7 +713,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
       </div></li>
     </ul>
     <div class="p-kick rv">
-      <p>Your system is ready to sell. <strong>Your website isn’t.</strong></p>
+      <p>You are ready to sell. <strong>Your website isn’t.</strong></p>
     </div>
   </div>
 </section>
@@ -751,7 +753,6 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
           <tr><th scope="row">Looks like</th><td data-l="Do it yourself">The snapshot, still</td><td data-l="Hire an agency">Your brand</td><td class="us" data-l="Brandfit">Your brand</td></tr>
           <tr><th scope="row">Time</th><td data-l="Do it yourself">1–2 weeks of your own work</td><td data-l="Hire an agency">4–8 weeks</td><td class="us" data-l="Brandfit">7 business days or less</td></tr>
           <tr><th scope="row">Cost</th><td data-l="Do it yourself">Your weekends</td><td data-l="Hire an agency">$3,700 on average</td><td class="us" data-l="Brandfit">$499</td></tr>
-          <tr><th scope="row">Your automations</th><td data-l="Do it yourself">At risk while you edit</td><td data-l="Hire an agency">May be rebuilt</td><td class="us" data-l="Brandfit">Left exactly as they are</td></tr>
           <tr><th scope="row">After launch</th><td data-l="Do it yourself">You’re on your own</td><td data-l="Hire an agency">Usually billed hourly</td><td class="us" data-l="Brandfit">Help when you need it</td></tr>
         </tbody>
       </table>
@@ -856,6 +857,7 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
         <input type="hidden" name="interest" id="interest" value="Website">
         <input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
         <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+        <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
         <fieldset>
           <legend class="legend">How should we reach you?</legend>
           <div class="opts">
@@ -863,14 +865,13 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
             <label><input type="radio" name="reach" value="Email"><svg aria-hidden="true"><use href="#i-send"/></svg>Email</label>
           </div>
         </fieldset>
-        <label class="field" id="whatsappWrap" hidden><span>WhatsApp number</span><small>Include your country code</small><input type="tel" name="whatsapp" id="whatsappInput" autocomplete="tel" pattern="[0-9+()\s\-]{7,}" disabled></label>
-        <label class="field" id="emailWrap" hidden><span>Email</span><input type="email" name="email" id="emailInput" autocomplete="email" disabled></label>
+        <label class="field" id="whatsappWrap" hidden><span>WhatsApp number <span class="opt">(optional)</span></span><small>Your full number with country code, starting with +</small><input type="tel" name="whatsapp" id="whatsappInput" autocomplete="tel" inputmode="tel" placeholder="+63 917 123 4567" disabled></label>
         <label class="field"><span>Your current website <span class="opt">(optional)</span></span><small>Your GHL site link, if you have one</small><input type="text" inputmode="url" name="website" autocomplete="url"></label>
         <label class="field"><span>About your business</span><small>What you sell, who it’s for, and what makes you different</small><textarea name="about" required></textarea></label>
-        <label class="field"><span>Your brand colors, brand kit or inspiration</span><small>Share your colors, a brand kit link, a website you love, a Pinterest board, or anything else that shows your style</small><textarea name="inspiration" required></textarea></label>
+        <label class="field"><span>Your brand colors, brand kit or inspiration</span><small>Tell us your colors, or add links to your brand kit, a website you love, a Pinterest board, or anything else that shows your style. You can also upload files below.</small><textarea name="inspiration" required></textarea></label>
         <div class="field">
           <span id="fileLabel">Upload files <span class="opt">(optional)</span></span>
-          <small>Brochure, price list, logo, photos: anything that tells us about you</small>
+          <small>Logo, brochure, price list, photos: anything that tells us about you. Prefer links? Add them above.</small>
           <label class="file"><input type="file" name="files" id="files" multiple aria-labelledby="fileLabel"><b>Choose files</b><em id="fileNames">No files chosen</em></label>
         </div>
         <button class="btn" type="submit" id="submitBtn">Get my free homepage mockup</button>
@@ -1078,18 +1079,20 @@ details[open] p:nth-of-type(3){animation-delay:.12s}
 
   var whatsappWrap = document.getElementById('whatsappWrap');
   var whatsappInput = document.getElementById('whatsappInput');
-  var emailWrap = document.getElementById('emailWrap');
-  var emailInput = document.getElementById('emailInput');
-  function setContact(wrap, input, on){
-    wrap.hidden = !on;
-    input.disabled = !on;
-    input.required = on;
-    if (!on) input.value = '';
+  function checkWhatsApp(){
+    var raw = whatsappInput.value.trim();
+    var clean = raw.replace(/[\s().-]/g, '');
+    var ok = !raw || /^\+[1-9]\d{7,14}$/.test(clean);
+    whatsappInput.setCustomValidity(ok ? '' : 'Please enter your full number with country code, like +63 917 123 4567.');
   }
+  whatsappInput.addEventListener('input', checkWhatsApp);
   form.querySelectorAll('input[name=reach]').forEach(function(r){
     r.addEventListener('change', function(){
-      setContact(whatsappWrap, whatsappInput, form.reach.value === 'WhatsApp');
-      setContact(emailWrap, emailInput, form.reach.value === 'Email');
+      var on = form.reach.value === 'WhatsApp';
+      whatsappWrap.hidden = !on;
+      whatsappInput.disabled = !on;
+      if (!on) whatsappInput.value = '';
+      checkWhatsApp();
     });
   });
 
